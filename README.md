@@ -82,6 +82,109 @@ Examples include:
 * Reducing unnecessary follow-up interactions
 
 ---
+# 🔄 Project Evolution
+
+This project was developed in two phases. **Phase 1** focused on exploring technically advanced approaches for AI token optimization, while **Phase 2** refined those ideas based on the organization's actual usage environment and implementation constraints.
+
+## Phase 1 — Technical / API-Based Approach
+
+Phase 1 investigated a centralized optimization architecture in which AI requests would pass through an intermediate middleware layer before reaching the AI provider.
+
+The proposed architecture included:
+
+```text
+Employee
+   ↓
+GPTCache
+   ↓
+Cache Hit?
+   ├── Yes → Return Cached Response
+   │
+   └── No
+        ↓
+     LLMLingua
+        ↓
+     LLM Router
+        ↓
+   Small / Medium / Large Model
+        ↓
+    AI Provider
+        ↓
+     Response
+        ↓
+   Store in GPTCache
+```
+
+The main technologies and concepts evaluated during Phase 1 included:
+
+* **GPTCache** — caching previously generated responses to reduce repeated AI requests.
+* **LLMLingua** — reducing unnecessary prompt/context tokens through prompt compression.
+* **LLM Router** — selecting an appropriate model based on task complexity.
+* **Middleware / Gateway Architecture** — providing a centralized layer between users and AI providers.
+* **AI Memory / Knowledge Reuse** — reusing previous responses and organizational knowledge.
+
+### Phase 1 Limitation
+
+Although the architecture was technically promising, it was not directly suitable for the organization's current environment.
+
+The main limitation was that a centralized middleware or gateway would need to intercept and forward requests to AI providers. This generally requires **API-based integration and API access**, while the organization's current usage is primarily through existing shared AI subscriptions and web interfaces.
+
+In addition, requiring employees to learn prompt-engineering techniques or significantly change their existing workflow would reduce the practicality of the solution.
+
+Therefore, Phase 1 provided the **technical foundation and identified the major optimization opportunities**, but a more practical approach was required.
+
+---
+
+# 🚀 Phase 2 — Practical / No-API Approach
+
+Phase 2 focuses on adapting the optimization strategy to the organization's real-world constraints.
+
+Instead of intercepting and automatically forwarding requests through a centralized middleware layer, the proposed solutions operate **before the request is submitted to the existing AI platform**.
+
+The employee continues to use the existing AI web interface, while optimization can be performed through:
+
+* Prompt guidance
+* Prompt templates
+* Context selection
+* Prompt builders
+* Task-specific assistants
+* Model selection guidelines
+* IDE-based assistance
+* Organization-wide AI usage rules
+
+```text
+Employee
+   ↓
+Optimization / Guidance
+   ↓
+Optimized Prompt
+   ↓
+Existing AI Web Interface
+   ↓
+AI Model
+   ↓
+Response
+```
+
+### Key Difference
+
+| Phase 1                                    | Phase 2                                             |
+| ------------------------------------------ | --------------------------------------------------- |
+| Centralized middleware                     | Pre-submission optimization                         |
+| API-oriented                               | No API required                                     |
+| Automatic request interception             | Employee submits final request                      |
+| GPTCache / LLMLingua / Router architecture | Practical tools, templates, guidance, and workflows |
+| Greater infrastructure requirement         | Lower implementation barrier                        |
+| More technically centralized               | More adaptable to existing workflows                |
+| Focus on technical optimization            | Focus on practical organizational adoption          |
+
+### Phase 2 Objective
+
+The objective of Phase 2 is to **reduce unnecessary AI token consumption and improve the effective utilization of existing AI resources without requiring API access or significant changes to employee behavior**.
+
+Phase 2 therefore focuses on solutions that can realistically be adopted by the organization and evaluated through measurable before-and-after usage.
+
+---
 
 # 🚀 Phase 2: Practical Optimization Approach
 
