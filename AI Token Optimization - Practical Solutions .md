@@ -148,7 +148,7 @@ Not constraining response length ("explain in detail," "give me everything") whe
 Section 4 in Phase 1 assumed employees would adopt prompt-engineering habits on their own, and touched on a proxy/gateway layer (LLMLingua + GPTCache + LLM Router) that intercepts calls to the AI provider directly. That approach has two real-world limitations for this organization:
 
 1. **Not everyone can write or understand prompt engineering.** A large share of the 50 users just need the AI to "do the task" — asking them to learn diff-only phrasing, context-trimming, or model-tiering rules by hand is not realistic as the primary fix.
-2. **A true proxy/gateway needs an API key.** Intercepting a request before it reaches Claude/Gemini/GPT and forwarding it programmatically requires **API access**, which this organization does not have (it only has flat-rate/shared web-UI subscriptions). Standing up LLMLingua/GPTCache/LLM Router as described in Phase 1 is therefore not applicable here.
+2. **A true proxy/gateway needs an API key.** Intercepting a request before it reaches Claude/Gemini/GPT and forwarding it programmatically requires **API access**, which is not applicable here.
 
 **Design constraint for everything below:** no solution forwards a request directly to the AI provider's cloud on the user's behalf. Every solution stops one step short of the AI platform — it prepares, trims, or selects the prompt/model, and the **employee is the one who manually pastes/sends it** into the existing web UI (Claude, Gemini, ChatGPT, etc.) they already use. This keeps every solution usable without an API key, without a paid API budget, and without requiring the end user to know any prompt engineering — the tool does that part for them.
 
